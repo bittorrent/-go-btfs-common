@@ -5,7 +5,6 @@ import (
 	"crypto/tls"
 	"errors"
 	"fmt"
-	"github.com/bittorrent/go-btfs-common/protos/online"
 	"net/url"
 	"strconv"
 	"strings"
@@ -16,7 +15,9 @@ import (
 	guardpb "github.com/bittorrent/go-btfs-common/protos/guard"
 	hubpb "github.com/bittorrent/go-btfs-common/protos/hub"
 	ledgerpb "github.com/bittorrent/go-btfs-common/protos/ledger"
+	"github.com/bittorrent/go-btfs-common/protos/online"
 	tronpb "github.com/bittorrent/go-btfs-common/protos/protocol/api"
+	"github.com/bittorrent/go-btfs-common/protos/score"
 	sharedpb "github.com/bittorrent/go-btfs-common/protos/shared"
 	statuspb "github.com/bittorrent/go-btfs-common/protos/status"
 
@@ -51,6 +52,8 @@ func (g *ClientBuilder) doWithContext(ctx context.Context, f interface{}) error 
 		return err
 	}
 	switch v := f.(type) {
+	case func(context.Context, score.ScoreServiceClient) error:
+		return wrapError("ScoreClient", v(ctx, score.NewScoreServiceClient(conn)))
 	case func(context.Context, online.OnlineServiceClient) error:
 		return wrapError("OnlineClient", v(ctx, online.NewOnlineServiceClient(conn)))
 	case func(context.Context, statuspb.StatusServiceClient) error:

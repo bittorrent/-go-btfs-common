@@ -1,0 +1,174 @@
+syntax = "proto3";
+
+package score;
+
+// gogo plugin toggles
+option (gogoproto.gogoproto_import) = true;
+option (gogoproto.goproto_registration) = true;
+option (gogoproto.marshaler_all) = true;
+option (gogoproto.messagename_all) = true;
+option (gogoproto.sizer_all) = true;
+option (gogoproto.unmarshaler_all) = true;
+// golang option
+option go_package = "score";
+// java options
+option java_multiple_files = true;
+option java_outer_classname = "ScoreProto";
+option java_package = "io.btfs.score";
+
+import "github.com/bittorrent/go-btfs-common/protos/node/node.proto";
+import "github.com/tron-us/protobuf/gogoproto/gogo.proto";
+import "google/protobuf/timestamp.proto";
+
+// HubQueryService are interface for score-query
+service ScoreService {
+  rpc GetSettings(SettingsReq) returns (SettingsResp);
+  rpc GetHosts(HostsReq) returns (HostsResp);
+  rpc GetStats(StatsReq) returns (StatsResp);
+  rpc QueryNodes(NodesReq) returns (HostsResp); //used by internal services
+  rpc GetHostsByRoles(RolesHostsReq) returns (HostsResp);
+}
+
+message NodesReq {
+  repeated string node_id = 1;
+  string requester_id = 2;
+  bytes signature = 3;
+}
+
+message SettingsReq {
+  string id = 1;
+  int32 resp_size = 2;
+}
+
+enum ResponseCode {
+  SUCCESS = 0;
+  SIGNATURE_FORMAT_ERROR = 1;
+  COMPUTE_ADDRESS_ERROR = 2;
+  TIMEOUT_ERROR = 3;
+  OTHER_ERROR = 20;
+}
+
+message SettingsResp {
+  ResponseCode code = 1;
+  string message = 2;
+  google.protobuf.Timestamp response_time = 3 [
+    (gogoproto.nullable) = false,
+    (gogoproto.stdtime) = true
+  ];
+  SettingsData settings_data = 4;
+}
+
+message SettingsData {
+  double storage_price_ask = 1;
+  double bandwidth_price_ask = 2;
+  double storage_time_min = 3;
+  double bandwidth_limit = 4;
+  double collateral_stake = 5;
+}
+
+message HostsReq {
+  string id = 1;
+  int32 resp_size = 2;
+  enum Mode {
+    SCORE = 0; // default
+    GEO = 1;
+    REP = 2;
+    PRICE = 3;
+    SPEED = 4;
+    TESTNET = 5;
+  }
+  Mode mode = 3;
+  string version = 4;
+}
+
+message RolesHostsReq {
+  string id = 1;
+  int32 resp_size = 2;
+  node.NodeRole role = 3;
+}
+
+message HostsResp {
+  ResponseCode code = 1;
+  string message = 2;
+  HostsData hosts = 3;
+  int32 resp_size = 4;
+  string mode = 5;
+  google.protobuf.Timestamp response_time = 6 [
+    (gogoproto.nullable) = false,
+    (gogoproto.stdtime) = true
+  ];
+}
+
+message StatsReq {
+  string id = 1;
+}
+
+message StatsResp {
+  ResponseCode code = 1;
+  string message = 2;
+  google.protobuf.Timestamp response_time = 3 [
+    (gogoproto.nullable) = false,
+    (gogoproto.stdtime) = true
+  ];
+  node.StorageStat.HostStats stats = 4 [
+    (gogoproto.embed) = true,
+    (gogoproto.nullable) = false
+  ];
+}
+
+message Host {
+  option (gogoproto.json_no_omit_empty) = true;
+  string node_id = 1;
+  google.protobuf.Timestamp create_timestamp = 2 [
+    (gogoproto.nullable) = false,
+    (gogoproto.stdtime) = true
+  ];
+  google.protobuf.Timestamp update_timestamp = 3 [
+    (gogoproto.nullable) = false,
+    (gogoproto.stdtime) = true
+  ];
+  string region = 4;
+  string btfs_version = 5;
+  float score = 6;
+  uint64 heart_beats = 7;
+  float uptime = 8;
+  uint64 age = 9;
+  float reputation = 10;
+  float upload_average = 11;
+  float upload_variance = 12;
+  float download_average = 13;
+  float download_variance = 14;
+  Location location = 15 [(gogoproto.nullable) = false];
+  float storage_volume_cap = 16;
+  float storage_volume_left = 17;
+  uint64 storage_time_min = 18;
+  uint64 storage_price_ask = 19;
+  uint64 storage_price_est = 20;
+  double bandwidth_limit = 21;
+  uint64 bandwidth_price_ask = 22;
+  uint64 bandwidth_price_est = 23;
+  uint64 collateral_stake = 24;
+  uint64 collateral_lost = 25;
+  uint64 collateral_burn = 26;
+  string country_short = 27; //if it is "", means no data related node_id find
+  node.Node.ExperimentalFlags flg = 28 [
+    (gogoproto.embed) = true,
+    (gogoproto.nullable) = false
+  ];
+  float discovery = 29;
+  float uptime_score = 30;
+  float age_score = 31;
+  float version_score = 32;
+  float upload_speed_score = 33;
+  float download_speed_score = 34;
+  repeated node.NodeRole roles = 35 [(gogoproto.pgtag) = "roles,array"];
+}
+
+message HostsData {
+  repeated Host hosts = 1;
+}
+
+message Location {
+  double lat = 1;
+  double lon = 2;
+}

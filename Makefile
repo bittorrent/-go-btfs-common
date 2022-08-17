@@ -22,6 +22,7 @@ PG_FIX_CANDIDATES=./protos/node/node.pb.go \
 			./protos/escrow/escrow.pb.go \
 			./protos/guard/guard.pb.go \
 			./protos/online/online.pb.go \
+			./protos/score/score.pb.go \
 
 install: brew trongogo
 
