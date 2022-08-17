@@ -63,7 +63,7 @@ lint:
 # Code generation directives.
 generate:
   go_options:
-    import_path: github.com/tron-us/go-btfs-common
+    import_path: github.com/bittorrent/go-btfs-common
     extra_modifiers:
       Mgoogle/protobuf/any.proto: github.com/tron-us/protobuf/types
       Mgoogle/protobuf/duration.proto: github.com/tron-us/protobuf/types

@@ -30,7 +30,7 @@ RUN wget --quiet https://github.com/uber/prototool/releases/download/v${PROTOTOO
 RUN tar -xf prototool-Linux-x86_64.tar.gz
 RUN mv prototool/bin/prototool /usr/local/bin/prototool
 
-ENV SRC_DIR /go/src/github.com/tron-us/go-btfs-common
+ENV SRC_DIR /go/src/github.com/bittorrent/go-btfs-common
 
 # Download packages first so they can be cached.
 COPY go.mod go.sum $SRC_DIR/

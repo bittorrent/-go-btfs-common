@@ -3,7 +3,7 @@ package config
 import (
 	"strconv"
 
-	"github.com/tron-us/go-btfs-common/protos/guard"
+	"github.com/bittorrent/go-btfs-common/protos/guard"
 	"github.com/tron-us/go-common/v2/env"
 	"github.com/tron-us/go-common/v2/log"
 

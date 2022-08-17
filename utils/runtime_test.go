@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/tron-us/go-btfs-common/config"
-	sharedpb "github.com/tron-us/go-btfs-common/protos/shared"
+	"github.com/bittorrent/go-btfs-common/config"
+	sharedpb "github.com/bittorrent/go-btfs-common/protos/shared"
 	"github.com/tron-us/go-common/v2/db"
 	"github.com/tron-us/go-common/v2/log"
 

@@ -12,8 +12,8 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var github_com_tron$us_go$btfs$common_protos_node_node_pb = require('../../github.com/tron-us/go-btfs-common/protos/node/node_pb.js');
-goog.object.extend(proto, github_com_tron$us_go$btfs$common_protos_node_node_pb);
+var github_com_bittorrent_go$btfs$common_protos_node_node_pb = require('../../github.com/bittorrent/go-btfs-common/protos/node/node_pb.js');
+goog.object.extend(proto, github_com_bittorrent_go$btfs$common_protos_node_node_pb);
 var github_com_tron$us_protobuf_gogoproto_gogo_pb = require('../../github.com/tron-us/protobuf/gogoproto/gogo_pb.js');
 goog.object.extend(proto, github_com_tron$us_protobuf_gogoproto_gogo_pb);
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
@@ -1592,7 +1592,7 @@ proto.status.ScoreHistoryReq.prototype.toObject = function(opt_includeInstance) 
 proto.status.ScoreHistoryReq.toObject = function(includeInstance, msg) {
   var f, obj = {
     scoresList: jspb.Message.toObjectList(msg.getScoresList(),
-    github_com_tron$us_go$btfs$common_protos_node_node_pb.ScoreHistoryTab.toObject, includeInstance)
+    github_com_bittorrent_go$btfs$common_protos_node_node_pb.ScoreHistoryTab.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -1630,8 +1630,8 @@ proto.status.ScoreHistoryReq.deserializeBinaryFromReader = function(msg, reader)
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new github_com_tron$us_go$btfs$common_protos_node_node_pb.ScoreHistoryTab;
-      reader.readMessage(value,github_com_tron$us_go$btfs$common_protos_node_node_pb.ScoreHistoryTab.deserializeBinaryFromReader);
+      var value = new github_com_bittorrent_go$btfs$common_protos_node_node_pb.ScoreHistoryTab;
+      reader.readMessage(value,github_com_bittorrent_go$btfs$common_protos_node_node_pb.ScoreHistoryTab.deserializeBinaryFromReader);
       msg.addScores(value);
       break;
     default:
@@ -1668,7 +1668,7 @@ proto.status.ScoreHistoryReq.serializeBinaryToWriter = function(message, writer)
     writer.writeRepeatedMessage(
       1,
       f,
-      github_com_tron$us_go$btfs$common_protos_node_node_pb.ScoreHistoryTab.serializeBinaryToWriter
+      github_com_bittorrent_go$btfs$common_protos_node_node_pb.ScoreHistoryTab.serializeBinaryToWriter
     );
   }
 };
@@ -1680,7 +1680,7 @@ proto.status.ScoreHistoryReq.serializeBinaryToWriter = function(message, writer)
  */
 proto.status.ScoreHistoryReq.prototype.getScoresList = function() {
   return /** @type{!Array<!proto.node.ScoreHistoryTab>} */ (
-    jspb.Message.getRepeatedWrapperField(this, github_com_tron$us_go$btfs$common_protos_node_node_pb.ScoreHistoryTab, 1));
+    jspb.Message.getRepeatedWrapperField(this, github_com_bittorrent_go$btfs$common_protos_node_node_pb.ScoreHistoryTab, 1));
 };
 
 
@@ -2658,7 +2658,7 @@ proto.status.NodeContractStatReq.prototype.toObject = function(opt_includeInstan
 proto.status.NodeContractStatReq.toObject = function(includeInstance, msg) {
   var f, obj = {
     nodeContractStatsList: jspb.Message.toObjectList(msg.getNodeContractStatsList(),
-    github_com_tron$us_go$btfs$common_protos_node_node_pb.NodeContractStat.toObject, includeInstance)
+    github_com_bittorrent_go$btfs$common_protos_node_node_pb.NodeContractStat.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -2696,8 +2696,8 @@ proto.status.NodeContractStatReq.deserializeBinaryFromReader = function(msg, rea
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new github_com_tron$us_go$btfs$common_protos_node_node_pb.NodeContractStat;
-      reader.readMessage(value,github_com_tron$us_go$btfs$common_protos_node_node_pb.NodeContractStat.deserializeBinaryFromReader);
+      var value = new github_com_bittorrent_go$btfs$common_protos_node_node_pb.NodeContractStat;
+      reader.readMessage(value,github_com_bittorrent_go$btfs$common_protos_node_node_pb.NodeContractStat.deserializeBinaryFromReader);
       msg.addNodeContractStats(value);
       break;
     default:
@@ -2734,7 +2734,7 @@ proto.status.NodeContractStatReq.serializeBinaryToWriter = function(message, wri
     writer.writeRepeatedMessage(
       1,
       f,
-      github_com_tron$us_go$btfs$common_protos_node_node_pb.NodeContractStat.serializeBinaryToWriter
+      github_com_bittorrent_go$btfs$common_protos_node_node_pb.NodeContractStat.serializeBinaryToWriter
     );
   }
 };
@@ -2746,7 +2746,7 @@ proto.status.NodeContractStatReq.serializeBinaryToWriter = function(message, wri
  */
 proto.status.NodeContractStatReq.prototype.getNodeContractStatsList = function() {
   return /** @type{!Array<!proto.node.NodeContractStat>} */ (
-    jspb.Message.getRepeatedWrapperField(this, github_com_tron$us_go$btfs$common_protos_node_node_pb.NodeContractStat, 1));
+    jspb.Message.getRepeatedWrapperField(this, github_com_bittorrent_go$btfs$common_protos_node_node_pb.NodeContractStat, 1));
 };
 
 

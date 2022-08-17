@@ -6,9 +6,9 @@ package escrow
 import (
 	context "context"
 	fmt "fmt"
+	ledger "github.com/bittorrent/go-btfs-common/protos/ledger"
 	_ "github.com/gogo/protobuf/types"
 	golang_proto "github.com/golang/protobuf/proto"
-	ledger "github.com/tron-us/go-btfs-common/protos/ledger"
 	_ "github.com/tron-us/protobuf/gogoproto"
 	proto "github.com/tron-us/protobuf/proto"
 	github_com_tron_us_protobuf_types "github.com/tron-us/protobuf/types"

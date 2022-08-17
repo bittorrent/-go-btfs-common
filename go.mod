@@ -1,4 +1,4 @@
-module github.com/tron-us/go-btfs-common
+module github.com/bittorrent/go-btfs-common
 
 go 1.13
 
