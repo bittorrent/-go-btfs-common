@@ -2,7 +2,7 @@ package grpc
 
 import (
 	"context"
-	statuspb "github.com/tron-us/go-btfs-common/protos/status"
+	statuspb "github.com/bittorrent/go-btfs-common/protos/status"
 )
 
 func StatusClient(addr string) *StatusClientBuilder {

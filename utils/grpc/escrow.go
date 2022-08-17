@@ -2,7 +2,7 @@ package grpc
 
 import (
 	"context"
-	escrowpb "github.com/tron-us/go-btfs-common/protos/escrow"
+	escrowpb "github.com/bittorrent/go-btfs-common/protos/escrow"
 )
 
 func EscrowClient(addr string) *EscrowClientBuilder {

@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"testing"
 
-	ledgerPb "github.com/tron-us/go-btfs-common/protos/ledger"
+	ledgerPb "github.com/bittorrent/go-btfs-common/protos/ledger"
 )
 
 const (

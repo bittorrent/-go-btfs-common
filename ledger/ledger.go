@@ -4,10 +4,10 @@ import (
 	"context"
 	"time"
 
-	ledgerpb "github.com/tron-us/go-btfs-common/protos/ledger"
+	ledgerpb "github.com/bittorrent/go-btfs-common/protos/ledger"
 
-	"github.com/tron-us/go-btfs-common/crypto"
-	"github.com/tron-us/go-btfs-common/utils/grpc"
+	"github.com/bittorrent/go-btfs-common/crypto"
+	"github.com/bittorrent/go-btfs-common/utils/grpc"
 	"github.com/tron-us/protobuf/proto"
 
 	ic "github.com/libp2p/go-libp2p-core/crypto"
