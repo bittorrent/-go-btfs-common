@@ -3,16 +3,11 @@ package grpc
 import (
 	"context"
 	"github.com/tron-us/go-common/v2/log"
-	"strings"
 	"testing"
 	"time"
 
 	"github.com/bittorrent/go-btfs-common/config"
-	hubpb "github.com/bittorrent/go-btfs-common/protos/hub"
-	"github.com/bittorrent/go-btfs-common/protos/shared"
-	sharedpb "github.com/bittorrent/go-btfs-common/protos/shared"
-
-	"github.com/tron-us/go-common/v2/constant"
+	scorepb "github.com/bittorrent/go-btfs-common/protos/score"
 
 	"github.com/stretchr/testify/assert"
 	"go.uber.org/zap"
@@ -20,8 +15,7 @@ import (
 )
 
 type serverStruct struct {
-	hubpb.UnimplementedHubQueryServiceServer
-	sharedpb.UnimplementedRuntimeServiceServer
+	scorepb.UnimplementedScoreServiceServer
 }
 
 func init() {
@@ -62,12 +56,12 @@ func TestSetupServer(t *testing.T) {
 	//test server with client, check runtime
 	for _, tt := range tests {
 		err := RuntimeClient(tt.in).WithContext(context.Background(), func(ctx context.Context,
-			client shared.RuntimeServiceClient) error {
-			res := requestRuntimeInfo(t, ctx, client)
-			//check runtime information
-			assert.True(t, strings.Contains(res.DbStatusExtra["DB_URL_STATUS"], constant.DBConnectionHealthy), "database assigned unsuccessfully")
-			assert.True(t, strings.Contains(res.DbStatusExtra["DB_URL_GUARD"], constant.DBConnectionHealthy), "database assigned unsuccessfully")
-			assert.True(t, strings.Contains(res.RdStatusExtra, constant.RDConnectionHealthy), "redis assigned unsuccessfully")
+			client scorepb.ScoreServiceClient) error {
+			requestRuntimeInfo(t, ctx, client)
+			////check runtime information
+			//assert.True(t, strings.Contains(res.DbStatusExtra["DB_URL_STATUS"], constant.DBConnectionHealthy), "database assigned unsuccessfully")
+			//assert.True(t, strings.Contains(res.DbStatusExtra["DB_URL_GUARD"], constant.DBConnectionHealthy), "database assigned unsuccessfully")
+			//assert.True(t, strings.Contains(res.RdStatusExtra, constant.RDConnectionHealthy), "redis assigned unsuccessfully")
 			return nil
 		})
 		if err != nil {
@@ -76,9 +70,9 @@ func TestSetupServer(t *testing.T) {
 	}
 }
 
-func requestRuntimeInfo(t *testing.T, ctx context.Context, c shared.RuntimeServiceClient) *sharedpb.RuntimeInfoReport {
-	req := new(shared.SignedRuntimeInfoRequest)
-	res, err := c.CheckRuntime(ctx, req)
+func requestRuntimeInfo(t *testing.T, ctx context.Context, c scorepb.ScoreServiceClient) *scorepb.SettingsResp {
+	req := new(scorepb.SettingsReq)
+	res, err := c.GetSettings(ctx, req)
 	if err != nil {
 		assert.Error(t, err, zap.Error(err))
 	}

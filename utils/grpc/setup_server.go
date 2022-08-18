@@ -3,7 +3,6 @@ package grpc
 import (
 	"context"
 	"fmt"
-	"github.com/bittorrent/go-btfs-common/protos/online"
 	"github.com/bittorrent/go-btfs-common/protos/score"
 	"net"
 	"net/http"
@@ -11,11 +10,7 @@ import (
 	"time"
 
 	"github.com/bittorrent/go-btfs-common/controller"
-	"github.com/bittorrent/go-btfs-common/protos/escrow"
-	"github.com/bittorrent/go-btfs-common/protos/guard"
-	"github.com/bittorrent/go-btfs-common/protos/hub"
 	"github.com/bittorrent/go-btfs-common/protos/shared"
-	"github.com/bittorrent/go-btfs-common/protos/status"
 	"github.com/bittorrent/go-btfs-common/utils"
 
 	"github.com/tron-us/go-common/v2/constant"
@@ -59,18 +54,6 @@ func (s *GrpcServer) serverTypeToServerName(server interface{}) {
 	switch t := server.(type) {
 	case score.ScoreServiceServer:
 		s.serverName = "score-server"
-	case online.OnlineServiceServer:
-		s.serverName = "online-server"
-	case status.StatusServiceServer:
-		s.serverName = "status-server"
-	case escrow.EscrowServiceServer:
-		s.serverName = "escrow"
-	case guard.GuardServiceServer:
-		s.serverName = "guard-interceptor"
-	case hub.HubQueryServiceServer:
-		s.serverName = "hub-query"
-	case hub.HubParseServiceServer:
-		s.serverName = "hub-parser"
 	case *controller.DefaultController:
 		s.serverName = fmt.Sprintf("%v", t.ServerName)
 	default:
@@ -181,18 +164,6 @@ func (s *GrpcServer) RegisterServer(server interface{}) *GrpcServer {
 	switch server.(type) {
 	case score.ScoreServiceServer:
 		score.RegisterScoreServiceServer(s.server, server.(score.ScoreServiceServer))
-	case online.OnlineServiceServer:
-		online.RegisterOnlineServiceServer(s.server, server.(online.OnlineServiceServer))
-	case status.StatusServiceServer:
-		status.RegisterStatusServiceServer(s.server, server.(status.StatusServiceServer))
-	case escrow.EscrowServiceServer:
-		escrow.RegisterEscrowServiceServer(s.server, server.(escrow.EscrowServiceServer))
-	case guard.GuardServiceServer:
-		guard.RegisterGuardServiceServer(s.server, server.(guard.GuardServiceServer))
-	case hub.HubQueryServiceServer:
-		hub.RegisterHubQueryServiceServer(s.server, server.(hub.HubQueryServiceServer))
-	case hub.HubParseServiceServer:
-		hub.RegisterHubParseServiceServer(s.server, server.(hub.HubParseServiceServer))
 	}
 
 	shared.RegisterRuntimeServiceServer(s.server, &RuntimeServer{DB_URL: s.dBURLs, RD_URL: s.rDURL, serviceName: s.serverName})

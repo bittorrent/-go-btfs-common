@@ -10,21 +10,10 @@ import (
 	"strings"
 	"time"
 
-	escrowpb "github.com/bittorrent/go-btfs-common/protos/escrow"
-	exchangepb "github.com/bittorrent/go-btfs-common/protos/exchange"
-	guardpb "github.com/bittorrent/go-btfs-common/protos/guard"
-	hubpb "github.com/bittorrent/go-btfs-common/protos/hub"
-	ledgerpb "github.com/bittorrent/go-btfs-common/protos/ledger"
-	"github.com/bittorrent/go-btfs-common/protos/online"
-	tronpb "github.com/bittorrent/go-btfs-common/protos/protocol/api"
 	"github.com/bittorrent/go-btfs-common/protos/score"
-	sharedpb "github.com/bittorrent/go-btfs-common/protos/shared"
-	statuspb "github.com/bittorrent/go-btfs-common/protos/status"
-
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/connectivity"
 	"google.golang.org/grpc/credentials"
-	"google.golang.org/grpc/health/grpc_health_v1"
 )
 
 const (
@@ -54,30 +43,6 @@ func (g *ClientBuilder) doWithContext(ctx context.Context, f interface{}) error 
 	switch v := f.(type) {
 	case func(context.Context, score.ScoreServiceClient) error:
 		return wrapError("ScoreClient", v(ctx, score.NewScoreServiceClient(conn)))
-	case func(context.Context, online.OnlineServiceClient) error:
-		return wrapError("OnlineClient", v(ctx, online.NewOnlineServiceClient(conn)))
-	case func(context.Context, statuspb.StatusServiceClient) error:
-		return wrapError("StatusClient", v(ctx, statuspb.NewStatusServiceClient(conn)))
-	case func(context.Context, hubpb.HubQueryServiceClient) error:
-		return wrapError("HubQueryClient", v(ctx, hubpb.NewHubQueryServiceClient(conn)))
-	case func(context.Context, hubpb.HubParseServiceClient) error:
-		return wrapError("HubParseClient", v(ctx, hubpb.NewHubParseServiceClient(conn)))
-	case func(context.Context, guardpb.GuardServiceClient) error:
-		return wrapError("GuardClient", v(ctx, guardpb.NewGuardServiceClient(conn)))
-	case func(context.Context, escrowpb.EscrowServiceClient) error:
-		return wrapError("EscrowClient", v(ctx, escrowpb.NewEscrowServiceClient(conn)))
-	case func(ctx context.Context, client sharedpb.RuntimeServiceClient) error:
-		return wrapError("RuntimeClient", v(ctx, sharedpb.NewRuntimeServiceClient(conn)))
-	case func(ctx context.Context, client grpc_health_v1.HealthClient) error:
-		return wrapError("HealthClient", v(ctx, grpc_health_v1.NewHealthClient(conn)))
-	case func(ctx context.Context, client ledgerpb.ChannelsClient) error:
-		return wrapError("LedgerClient", v(ctx, ledgerpb.NewChannelsClient(conn)))
-	case func(ctx context.Context, client exchangepb.ExchangeClient) error:
-		return wrapError("ExchangeClient", v(ctx, exchangepb.NewExchangeClient(conn)))
-	case func(ctx context.Context, client tronpb.WalletSolidityClient) error:
-		return wrapError("WalletSolidityClient", v(ctx, tronpb.NewWalletSolidityClient(conn)))
-	case func(ctx context.Context, client tronpb.WalletClient) error:
-		return wrapError("WalletClient", v(ctx, tronpb.NewWalletClient(conn)))
 	default:
 		return fmt.Errorf("illegal function: %T", f)
 	}
