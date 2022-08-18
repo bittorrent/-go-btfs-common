@@ -14,6 +14,6 @@ type ScoreClientBuilder struct {
 }
 
 func (g *ScoreClientBuilder) WithContext(ctx context.Context, f func(ctx context.Context,
-	client score.ScoreServiceServer) error) error {
+	client score.ScoreServiceClient) error) error {
 	return g.doWithContext(ctx, f)
 }
