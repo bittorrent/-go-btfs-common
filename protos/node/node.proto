@@ -1,0 +1,341 @@
+syntax = "proto3";
+
+package node;
+
+// gogo plugin toggles
+option (gogoproto.gogoproto_import) = true;
+option (gogoproto.goproto_registration) = true;
+option (gogoproto.marshaler_all) = true;
+option (gogoproto.messagename_all) = true;
+option (gogoproto.populate_all) = true;
+option (gogoproto.sizer_all) = true;
+option (gogoproto.unmarshaler_all) = true;
+// golang option
+option go_package = "node";
+// java options
+option java_multiple_files = true;
+option java_outer_classname = "NodeProto";
+option java_package = "io.btfs.node";
+
+import "github.com/tron-us/go-btfs-common/protos/guard/guard.proto";
+import "github.com/tron-us/protobuf/gogoproto/gogo.proto";
+import "google/protobuf/timestamp.proto";
+
+enum NodeRole {
+  RENTER = 0;
+  HOST = 1;
+  REPAIRER = 2;
+  CHALLENGER = 3;
+  NETWORK_CHECKER = 4;
+  REPUTATION_CHECKER = 5;
+  CDN_PROVIDER = 6;
+  OTHER = 20;
+}
+
+message PayLoadInfo {
+  string node_id = 1;
+  Node node = 2;
+  repeated DiscoveryNode discovery_nodes = 3;
+  google.protobuf.Timestamp last_time = 4 [
+    (gogoproto.nullable) = false,
+    (gogoproto.stdtime) = true
+  ];
+}
+
+enum DiscoveryErrorCode {
+  SUCCESS = 0;
+  UNCONNECTED = 1;
+  TIMEOUT = 2;
+  ABSOLUTELY_UNOPEN = 3;
+  OTHER_REASON = 10;
+}
+
+message DiscoveryNode {
+  string to_node_id = 1;
+  int32 node_connect_latency = 2;
+  DiscoveryErrorCode err_code = 3;
+}
+
+message DiscoveryTab {
+  string table_name = 1 [(gogoproto.moretags) = "pg:\"node_discovery,alias:t,discard_unknown_columns\""];
+  string node_id = 2;
+  uint32 connect_cnt = 3;
+  int32 avg_connect_latency = 4;
+  DiscoveryErrorCode err_code = 5;
+  int32 discovery_label = 6;
+  google.protobuf.Timestamp time_created = 7 [
+    (gogoproto.nullable) = false,
+    (gogoproto.stdtime) = true
+  ];
+}
+
+message Node {
+  message Settings {
+    uint64 storage_price_ask = 1;
+    uint64 bandwidth_price_ask = 2;
+    uint64 storage_time_min = 3;
+    double bandwidth_limit = 4;
+    uint64 collateral_stake = 5;
+    uint64 storage_price_default = 6; // network default
+    bool customized_pricing = 7; // whether to use storage_price_ask
+    repeated NodeRole roles = 8 [(gogoproto.pgtag) = "roles,array"];
+    uint64 repair_price_default = 9;
+    uint64 repair_price_customized = 10;
+    bool repair_customized_pricing = 11;
+    uint64 challenge_price_default = 12;
+    uint64 challenge_price_customized = 13;
+    bool challenge_customized_pricing = 14;
+  }
+  message Geo {
+    string country_short = 1;
+    string region = 2;
+    float latitude = 3;
+    float longitude = 4;
+  }
+  message ExperimentalFlags {
+    bool analytics = 1;
+    bool filestore_enabled = 2;
+    bool hosts_sync_enabled = 3;
+    string hosts_sync_mode = 4;
+    bool libp2p_stream_mounting = 5;
+    bool p2p_http_proxy = 6;
+    bool prefer_tls = 7; // deprecated
+    bool quic = 8;
+    bool remove_on_unpin = 9;
+    bool sharding_enabled = 10;
+    bool storage_client_enabled = 11;
+    bool storage_host_enabled = 12;
+    bool strategic_providing = 13;
+    bool url_store_enabled = 14;
+    bool disable_auto_update = 15;
+    bool graphsync_enabled = 16;
+    bool repair_host_enabled = 17;
+    bool challenge_host_enabled = 18;
+  }
+  string table_name = 1 [(gogoproto.moretags) = "pg:\"node_metrics,alias:t,discard_unknown_columns\""];
+  string node_id = 2;
+  string btfs_version = 3;
+  uint64 up_time = 4;
+  uint64 storage_used = 5;
+  uint64 storage_volume_cap = 6;
+  uint64 memory_used = 7;
+  double cpu_used = 8;
+  uint64 upload = 9;
+  uint64 download = 10;
+  uint64 total_upload = 11;
+  uint64 total_download = 12;
+  uint64 storage_price_deal = 13;
+  uint64 bandwidth_price_deal = 14;
+  Settings settings = 15 [
+    (gogoproto.embed) = true,
+    (gogoproto.nullable) = false
+  ];
+  double reputation = 16;
+  uint64 blocks_up = 17;
+  uint64 blocks_down = 18;
+  string os_type = 19;
+  string arch_type = 20;
+  string cpu_info = 21;
+  uint64 peers_connected = 23;
+  google.protobuf.Timestamp time_created = 24 [
+    (gogoproto.nullable) = false,
+    (gogoproto.stdtime) = true
+  ];
+  string h_val = 25;
+  Geo geo = 26 [
+    (gogoproto.embed) = true,
+    (gogoproto.nullable) = false
+  ];
+  ExperimentalFlags flg = 27 [
+    (gogoproto.embed) = true,
+    (gogoproto.nullable) = false
+  ];
+  google.protobuf.Timestamp first_created_time = 28 [
+    (gogoproto.nullable) = false,
+    (gogoproto.stdtime) = true
+  ];
+}
+
+message NodeContractStat {
+  string table_name = 1 [(gogoproto.moretags) = "pg:\"all_miners,alias:t,discard_unknown_columns\""];
+  string node_id = 2;
+  bool big_miner = 3;
+  google.protobuf.Timestamp last_modify_time = 4 [
+    (gogoproto.nullable) = false,
+    (gogoproto.stdtime) = true
+  ];
+}
+
+message StorageStat {
+  option (gogoproto.json_no_omit_empty) = true;
+  message HostStats {
+    option (gogoproto.json_no_omit_empty) = true;
+    float uptime = 1;
+    float score = 2;
+    float uptime_score = 3;
+    float age_score = 4;
+    float version_score = 5;
+    float speed_score = 6;
+    float upload_speed_score = 7;
+    float download_speed_score = 8;
+    float uptime_weight = 9;
+    float age_weight = 10;
+    float version_weight = 11;
+    float speed_weight = 12;
+    float upload_speed_weight = 13;
+    float download_speed_weight = 14;
+    google.protobuf.Timestamp last_updated = 15 [
+      (gogoproto.nullable) = false,
+      (gogoproto.stdtime) = true
+    ];
+    float active_score = 16;
+    float active_weight = 17;
+    int32 uptime_level = 18;
+    int32 age_level = 19;
+    int32 version_level = 20;
+    int32 active_level = 21;
+    int32 level = 22;
+  }
+  message Host {
+    option (gogoproto.json_no_omit_empty) = true;
+    bool online = 1;
+    int64 storage_used = 2;
+    int64 storage_cap = 3;
+    int64 storage_disk_total = 4;
+    int64 storage_disk_available = 5;
+    HostStats stats = 6 [
+      (gogoproto.embed) = true,
+      (gogoproto.jsontag) = "",
+      (gogoproto.nullable) = false
+    ];
+  }
+  message Renter {
+    option (gogoproto.json_no_omit_empty) = true;
+    string reserved = 1;
+  }
+  Host host_stats = 1 [(gogoproto.nullable) = false];
+  Renter renter_stats = 2 [(gogoproto.nullable) = false];
+}
+
+message ContractStat {
+  option (gogoproto.json_no_omit_empty) = true;
+  enum Role {
+    HOST = 0;
+    RENTER = 1;
+    RESERVED = 2;
+  }
+  int64 active_contract_num = 1;
+  int64 compensation_paid = 2;
+  int64 compensation_outstanding = 3;
+  google.protobuf.Timestamp first_contract_start = 4 [
+    (gogoproto.nullable) = false,
+    (gogoproto.stdtime) = true
+  ];
+  google.protobuf.Timestamp last_contract_end = 5 [
+    (gogoproto.nullable) = false,
+    (gogoproto.stdtime) = true
+  ];
+  Role role = 6;
+}
+
+message Contracts {
+  option (gogoproto.json_no_omit_empty) = true;
+  message Contract {
+    option (gogoproto.json_no_omit_empty) = true;
+    string contract_id = 1;
+    string host_id = 2;
+    string renter_id = 3;
+    guard.Contract.ContractState status = 4;
+    google.protobuf.Timestamp start_time = 5 [
+      (gogoproto.nullable) = false,
+      (gogoproto.stdtime) = true
+    ];
+    google.protobuf.Timestamp end_time = 6 [
+      (gogoproto.nullable) = false,
+      (gogoproto.stdtime) = true
+    ];
+    google.protobuf.Timestamp next_escrow_time = 7 [
+      (gogoproto.nullable) = false,
+      (gogoproto.stdtime) = true
+    ];
+    int64 compensation_paid = 8;
+    int64 compensation_outstanding = 9;
+    int64 unit_price = 10;
+    int64 shard_size = 11;
+    string shard_hash = 12;
+    string file_hash = 13;
+    google.protobuf.Timestamp last_modify_time = 14 [
+      (gogoproto.nullable) = false,
+      (gogoproto.stdtime) = true
+    ];
+  }
+  repeated Contract contracts = 1;
+}
+
+message BtfsScanTab {
+  string table_name = 1 [(gogoproto.moretags) = "pg:\"btfs_scan,alias:t,discard_unknown_columns\""];
+  double storage_volume_left = 2;
+  uint32 online_miners_number = 3;
+  map<string, int32> country_distribute = 4;
+  map<string, int32> score_distribute = 5;
+  google.protobuf.Timestamp time_created = 6 [
+    (gogoproto.nullable) = false,
+    (gogoproto.stdtime) = true
+  ];
+  double storage_already_used = 7;
+  double price = 8;
+  google.protobuf.Timestamp date_created = 9 [
+    (gogoproto.nullable) = false,
+    (gogoproto.stdtime) = true
+  ];
+  string new_rank = 10;
+  string total_rank = 11;
+  uint32 contract_all_count = 12;
+  uint32 contract_fail_count = 13;
+  double contract_all_storage = 14;
+  double contract_fail_storage = 15;
+  double storage_left_when_contract = 16;
+  uint32 super_online_miners_count = 17;
+  uint32 new_online_miners_count = 18;
+  int64 miners_all_amount = 19;
+  int64 total_miners = 20;
+  int64 big_miners = 21;
+  map<string, int32> version_distribute = 22;
+}
+
+message ScoreHistoryTab {
+  string table_name = 1 [(gogoproto.moretags) = "pg:\"score_history,alias:t,discard_unknown_columns\""];
+  string node_id = 2;
+  uint64 storage_volume_cap = 3;
+  uint64 storage_volume_left = 4;
+  uint32 score = 5;
+  google.protobuf.Timestamp date_created = 6 [
+    (gogoproto.nullable) = false,
+    (gogoproto.stdtime) = true
+  ];
+  google.protobuf.Timestamp time_created = 7 [
+    (gogoproto.nullable) = false,
+    (gogoproto.stdtime) = true
+  ];
+}
+
+message AirdropRewardHistoryTab {
+  string table_name = 1 [(gogoproto.moretags) = "pg:\"airdrop_reward_history,alias:t,discard_unknown_columns\""];
+  uint32 type = 2;
+  string node_id = 3;
+  bool is_suspect = 5;
+  uint32 weight = 6;
+  uint32 stake = 7;
+  google.protobuf.Timestamp date_created = 8 [
+    (gogoproto.nullable) = false,
+    (gogoproto.stdtime) = true
+  ];
+  google.protobuf.Timestamp time_created = 9 [
+    (gogoproto.nullable) = false,
+    (gogoproto.stdtime) = true
+  ];
+  uint32 file_count = 10;
+  uint64 file_size = 11;
+  uint64 should_reward = 12;
+  uint64 actual_reward = 13;
+}
