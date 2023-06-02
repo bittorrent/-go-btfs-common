@@ -2,7 +2,7 @@ package grpc
 
 import (
 	"context"
-	ledgerpb "github.com/tron-us/go-btfs-common/protos/ledger"
+	ledgerpb "github.com/bittorrent/go-btfs-common/protos/ledger"
 )
 
 func LedgerClient(addr string) *LedgerClientBuilder {

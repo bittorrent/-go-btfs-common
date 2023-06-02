@@ -2,17 +2,17 @@ package grpc
 
 import (
 	"context"
-	"github.com/tron-us/go-common/v2/log"
+	"github.com/bittorrent/go-common/v2/log"
 	"strings"
 	"testing"
 	"time"
 
-	"github.com/tron-us/go-btfs-common/config"
-	hubpb "github.com/tron-us/go-btfs-common/protos/hub"
-	"github.com/tron-us/go-btfs-common/protos/shared"
-	sharedpb "github.com/tron-us/go-btfs-common/protos/shared"
+	"github.com/bittorrent/go-btfs-common/config"
+	hubpb "github.com/bittorrent/go-btfs-common/protos/hub"
+	"github.com/bittorrent/go-btfs-common/protos/shared"
+	sharedpb "github.com/bittorrent/go-btfs-common/protos/shared"
 
-	"github.com/tron-us/go-common/v2/constant"
+	"github.com/bittorrent/go-common/v2/constant"
 
 	"github.com/stretchr/testify/assert"
 	"go.uber.org/zap"

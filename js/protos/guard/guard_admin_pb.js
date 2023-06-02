@@ -12,7 +12,7 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var github_com_tron$us_protobuf_gogoproto_gogo_pb = require('../../github.com/tron-us/protobuf/gogoproto/gogo_pb.js');
+var github_com_tron$us_protobuf_gogoproto_gogo_pb = require('../../github.com/bittorrent/protobuf/gogoproto/gogo_pb.js');
 goog.object.extend(proto, github_com_tron$us_protobuf_gogoproto_gogo_pb);
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);

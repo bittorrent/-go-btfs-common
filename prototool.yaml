@@ -7,7 +7,7 @@ protoc:
   version: 3.10.0
   includes:
     - .
-    - ../../tron-us/protobuf/protobuf
+    - ../../bittorrent/protobuf/protobuf
     - ../../../../src
     - ../googleapis
   allow_unused_imports: false
@@ -63,13 +63,13 @@ lint:
 # Code generation directives.
 generate:
   go_options:
-    import_path: github.com/tron-us/go-btfs-common
+    import_path: github.com/bittorrent/go-btfs-common
     extra_modifiers:
-      Mgoogle/protobuf/any.proto: github.com/tron-us/protobuf/types
-      Mgoogle/protobuf/duration.proto: github.com/tron-us/protobuf/types
-      Mgoogle/protobuf/struct.proto: github.com/tron-us/protobuf/types
-      Mgoogle/protobuf/timestamp.proto: github.com/tron-us/protobuf/types
-      Mgoogle/protobuf/wrappers.proto: github.com/tron-us/protobuf/types
+      Mgoogle/protobuf/any.proto: github.com/bittorrent/protobuf/types
+      Mgoogle/protobuf/duration.proto: github.com/bittorrent/protobuf/types
+      Mgoogle/protobuf/struct.proto: github.com/bittorrent/protobuf/types
+      Mgoogle/protobuf/timestamp.proto: github.com/bittorrent/protobuf/types
+      Mgoogle/protobuf/wrappers.proto: github.com/bittorrent/protobuf/types
 
   plugins:
     - name: gogo

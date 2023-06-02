@@ -3,8 +3,8 @@ package crypto
 import (
 	"testing"
 
+	"github.com/bittorrent/go-common/v2/log"
 	"github.com/stretchr/testify/assert"
-	"github.com/tron-us/go-common/v2/log"
 
 	"go.uber.org/zap"
 )

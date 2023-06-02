@@ -3,8 +3,8 @@ package ledger
 import (
 	"fmt"
 
-	escrowpb "github.com/tron-us/go-btfs-common/protos/escrow"
-	ledgerpb "github.com/tron-us/go-btfs-common/protos/ledger"
+	escrowpb "github.com/bittorrent/go-btfs-common/protos/escrow"
+	ledgerpb "github.com/bittorrent/go-btfs-common/protos/ledger"
 
 	ic "github.com/libp2p/go-libp2p/core/crypto"
 )

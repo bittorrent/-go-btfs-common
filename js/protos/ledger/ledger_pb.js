@@ -12,8 +12,8 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var github_com_tron$us_protobuf_gogoproto_gogo_pb = require('../../github.com/tron-us/protobuf/gogoproto/gogo_pb.js');
-goog.object.extend(proto, github_com_tron$us_protobuf_gogoproto_gogo_pb);
+var github_com_bittorrent_protobuf_gogoproto_gogo_pb = require('../../github.com/bittorrent/protobuf/gogoproto/gogo_pb.js');
+goog.object.extend(proto, github_com_bittorrent_protobuf_gogoproto_gogo_pb);
 goog.exportSymbol('proto.ledger.Account', null, global);
 goog.exportSymbol('proto.ledger.ChannelClosed', null, global);
 goog.exportSymbol('proto.ledger.ChannelCommit', null, global);

@@ -16,8 +16,8 @@ option java_multiple_files = true;
 option java_outer_classname = "HubProto";
 option java_package = "io.btfs.hub";
 
-import "github.com/tron-us/go-btfs-common/protos/node/node.proto";
-import "github.com/tron-us/protobuf/gogoproto/gogo.proto";
+import "github.com/bittorrent/go-btfs-common/protos/node/node.proto";
+import "github.com/bittorrent/protobuf/gogoproto/gogo.proto";
 import "google/protobuf/timestamp.proto";
 
 // HubQueryService are interface for hub-query

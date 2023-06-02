@@ -12,10 +12,10 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var github_com_tron$us_go$btfs$common_protos_node_node_pb = require('../../github.com/tron-us/go-btfs-common/protos/node/node_pb.js');
-goog.object.extend(proto, github_com_tron$us_go$btfs$common_protos_node_node_pb);
-var github_com_tron$us_protobuf_gogoproto_gogo_pb = require('../../github.com/tron-us/protobuf/gogoproto/gogo_pb.js');
-goog.object.extend(proto, github_com_tron$us_protobuf_gogoproto_gogo_pb);
+var github_com_bittorrent_go$btfs$common_protos_node_node_pb = require('../../github.com/bittorrent/go-btfs-common/protos/node/node_pb.js');
+goog.object.extend(proto, github_com_bittorrent_go$btfs$common_protos_node_node_pb);
+var github_com_bittorrent_protobuf_gogoproto_gogo_pb = require('../../github.com/bittorrent/protobuf/gogoproto/gogo_pb.js');
+goog.object.extend(proto, github_com_bittorrent_protobuf_gogoproto_gogo_pb);
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
 goog.exportSymbol('proto.hub.Candidate', null, global);
@@ -2389,7 +2389,7 @@ proto.hub.StatsResp.toObject = function(includeInstance, msg) {
     code: jspb.Message.getFieldWithDefault(msg, 1, 0),
     message: jspb.Message.getFieldWithDefault(msg, 2, ""),
     responseTime: (f = msg.getResponseTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    stats: (f = msg.getStats()) && github_com_tron$us_go$btfs$common_protos_node_node_pb.StorageStat.HostStats.toObject(includeInstance, f)
+    stats: (f = msg.getStats()) && github_com_bittorrent_go$btfs$common_protos_node_node_pb.StorageStat.HostStats.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2440,8 +2440,8 @@ proto.hub.StatsResp.deserializeBinaryFromReader = function(msg, reader) {
       msg.setResponseTime(value);
       break;
     case 4:
-      var value = new github_com_tron$us_go$btfs$common_protos_node_node_pb.StorageStat.HostStats;
-      reader.readMessage(value,github_com_tron$us_go$btfs$common_protos_node_node_pb.StorageStat.HostStats.deserializeBinaryFromReader);
+      var value = new github_com_bittorrent_go$btfs$common_protos_node_node_pb.StorageStat.HostStats;
+      reader.readMessage(value,github_com_bittorrent_go$btfs$common_protos_node_node_pb.StorageStat.HostStats.deserializeBinaryFromReader);
       msg.setStats(value);
       break;
     default:
@@ -2500,7 +2500,7 @@ proto.hub.StatsResp.serializeBinaryToWriter = function(message, writer) {
     writer.writeMessage(
       4,
       f,
-      github_com_tron$us_go$btfs$common_protos_node_node_pb.StorageStat.HostStats.serializeBinaryToWriter
+      github_com_bittorrent_go$btfs$common_protos_node_node_pb.StorageStat.HostStats.serializeBinaryToWriter
     );
   }
 };
@@ -2585,7 +2585,7 @@ proto.hub.StatsResp.prototype.hasResponseTime = function() {
  */
 proto.hub.StatsResp.prototype.getStats = function() {
   return /** @type{?proto.node.StorageStat.HostStats} */ (
-    jspb.Message.getWrapperField(this, github_com_tron$us_go$btfs$common_protos_node_node_pb.StorageStat.HostStats, 4));
+    jspb.Message.getWrapperField(this, github_com_bittorrent_go$btfs$common_protos_node_node_pb.StorageStat.HostStats, 4));
 };
 
 
@@ -3662,7 +3662,7 @@ proto.hub.Host.toObject = function(includeInstance, msg) {
     collateralLost: jspb.Message.getFieldWithDefault(msg, 25, 0),
     collateralBurn: jspb.Message.getFieldWithDefault(msg, 26, 0),
     countryShort: jspb.Message.getFieldWithDefault(msg, 27, ""),
-    flg: (f = msg.getFlg()) && github_com_tron$us_go$btfs$common_protos_node_node_pb.Node.ExperimentalFlags.toObject(includeInstance, f),
+    flg: (f = msg.getFlg()) && github_com_bittorrent_go$btfs$common_protos_node_node_pb.Node.ExperimentalFlags.toObject(includeInstance, f),
     discovery: jspb.Message.getFloatingPointFieldWithDefault(msg, 29, 0.0),
     uptimeScore: jspb.Message.getFloatingPointFieldWithDefault(msg, 30, 0.0),
     ageScore: jspb.Message.getFloatingPointFieldWithDefault(msg, 31, 0.0),
@@ -3822,8 +3822,8 @@ proto.hub.Host.deserializeBinaryFromReader = function(msg, reader) {
       msg.setCountryShort(value);
       break;
     case 28:
-      var value = new github_com_tron$us_go$btfs$common_protos_node_node_pb.Node.ExperimentalFlags;
-      reader.readMessage(value,github_com_tron$us_go$btfs$common_protos_node_node_pb.Node.ExperimentalFlags.deserializeBinaryFromReader);
+      var value = new github_com_bittorrent_go$btfs$common_protos_node_node_pb.Node.ExperimentalFlags;
+      reader.readMessage(value,github_com_bittorrent_go$btfs$common_protos_node_node_pb.Node.ExperimentalFlags.deserializeBinaryFromReader);
       msg.setFlg(value);
       break;
     case 29:
@@ -4098,7 +4098,7 @@ proto.hub.Host.serializeBinaryToWriter = function(message, writer) {
     writer.writeMessage(
       28,
       f,
-      github_com_tron$us_go$btfs$common_protos_node_node_pb.Node.ExperimentalFlags.serializeBinaryToWriter
+      github_com_bittorrent_go$btfs$common_protos_node_node_pb.Node.ExperimentalFlags.serializeBinaryToWriter
     );
   }
   f = message.getDiscovery();
@@ -4732,7 +4732,7 @@ proto.hub.Host.prototype.setCountryShort = function(value) {
  */
 proto.hub.Host.prototype.getFlg = function() {
   return /** @type{?proto.node.Node.ExperimentalFlags} */ (
-    jspb.Message.getWrapperField(this, github_com_tron$us_go$btfs$common_protos_node_node_pb.Node.ExperimentalFlags, 28));
+    jspb.Message.getWrapperField(this, github_com_bittorrent_go$btfs$common_protos_node_node_pb.Node.ExperimentalFlags, 28));
 };
 
 

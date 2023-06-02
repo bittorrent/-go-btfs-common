@@ -2,7 +2,7 @@ package grpc
 
 import (
 	"context"
-	"github.com/tron-us/go-btfs-common/protos/online"
+	"github.com/bittorrent/go-btfs-common/protos/online"
 )
 
 func OnlineClient(addr string) *OnlineClientBuilder {

@@ -4,10 +4,10 @@ import (
 	"context"
 	"time"
 
-	sharedpb "github.com/tron-us/go-btfs-common/protos/shared"
-	"github.com/tron-us/go-btfs-common/utils"
+	sharedpb "github.com/bittorrent/go-btfs-common/protos/shared"
+	"github.com/bittorrent/go-btfs-common/utils"
 
-	"github.com/tron-us/go-common/v2/db"
+	"github.com/bittorrent/go-common/v2/db"
 )
 
 func RuntimeClient(addr string) *RuntimeClientBuilder {

@@ -6,8 +6,8 @@ package protocol_api
 import (
 	context "context"
 	fmt "fmt"
-	core "github.com/tron-us/go-btfs-common/protos/protocol/core"
-	proto "github.com/tron-us/protobuf/proto"
+	core "github.com/bittorrent/go-btfs-common/protos/protocol/core"
+	proto "github.com/bittorrent/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"

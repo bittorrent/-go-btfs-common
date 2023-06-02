@@ -2,7 +2,7 @@ package grpc
 
 import (
 	"context"
-	tronpb "github.com/tron-us/go-btfs-common/protos/protocol/api"
+	tronpb "github.com/bittorrent/go-btfs-common/protos/protocol/api"
 )
 
 func WalletClient(addr string) *WalletClientBuilder {
