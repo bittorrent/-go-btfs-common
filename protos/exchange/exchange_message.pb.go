@@ -5,9 +5,9 @@ package protocol
 
 import (
 	fmt "fmt"
+	ledger "github.com/bittorrent/go-btfs-common/protos/ledger"
+	proto "github.com/bittorrent/protobuf/proto"
 	types "github.com/gogo/protobuf/types"
-	ledger "github.com/tron-us/go-btfs-common/protos/ledger"
-	proto "github.com/tron-us/protobuf/proto"
 	math "math"
 )
 

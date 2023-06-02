@@ -2,7 +2,7 @@ package grpc
 
 import (
 	"context"
-	exchangepb "github.com/tron-us/go-btfs-common/protos/exchange"
+	exchangepb "github.com/bittorrent/go-btfs-common/protos/exchange"
 )
 
 func ExchangeClient(addr string) *ExchangeClientBuilder {

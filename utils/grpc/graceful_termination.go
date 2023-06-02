@@ -8,7 +8,7 @@ import (
 
 	"google.golang.org/grpc"
 
-	"github.com/tron-us/go-common/v2/log"
+	"github.com/bittorrent/go-common/v2/log"
 )
 
 // GracefulTerminateDetect catches SIGTERM and SIGINT

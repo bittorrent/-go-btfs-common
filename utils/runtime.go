@@ -3,13 +3,13 @@ package utils
 import (
 	"context"
 
-	sharedpb "github.com/tron-us/go-btfs-common/protos/shared"
+	sharedpb "github.com/bittorrent/go-btfs-common/protos/shared"
 
-	"github.com/tron-us/go-common/v2/constant"
-	"github.com/tron-us/go-common/v2/db"
-	"github.com/tron-us/go-common/v2/db/postgres"
-	"github.com/tron-us/go-common/v2/db/redis"
-	"github.com/tron-us/go-common/v2/log"
+	"github.com/bittorrent/go-common/v2/constant"
+	"github.com/bittorrent/go-common/v2/db"
+	"github.com/bittorrent/go-common/v2/db/postgres"
+	"github.com/bittorrent/go-common/v2/db/redis"
+	"github.com/bittorrent/go-common/v2/log"
 
 	"go.uber.org/zap"
 )

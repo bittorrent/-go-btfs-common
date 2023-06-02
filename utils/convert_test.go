@@ -5,9 +5,9 @@ import (
 	"crypto/rand"
 	"testing"
 
+	"github.com/bittorrent/go-btfs-common/protos/escrow"
+	"github.com/bittorrent/protobuf/proto"
 	"github.com/libp2p/go-libp2p/core/crypto"
-	"github.com/tron-us/go-btfs-common/protos/escrow"
-	"github.com/tron-us/protobuf/proto"
 )
 
 func TestBytesToStringAndStringToBytesInText(t *testing.T) {

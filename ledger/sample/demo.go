@@ -2,9 +2,9 @@ package main
 
 import (
 	"context"
-	"github.com/tron-us/go-btfs-common/crypto"
-	"github.com/tron-us/go-btfs-common/ledger"
-	"github.com/tron-us/go-common/v2/log"
+	"github.com/bittorrent/go-btfs-common/crypto"
+	"github.com/bittorrent/go-btfs-common/ledger"
+	"github.com/bittorrent/go-common/v2/log"
 
 	"go.uber.org/zap"
 )

@@ -30,7 +30,7 @@ brew:
 
 trongogo:
 	cd ../ && git clone https://github.com/googleapis/googleapis.git && cd go-btfs-common || true
-	cd ../ && git clone https://github.com/TRON-US/protobuf || true
+	cd ../ && git clone https://github.com/bittorrent/protobuf || true
 	cd ../protobuf && git checkout master && git pull && make
 	cd ../googleapis && git checkout master && git pull
 

@@ -6,9 +6,9 @@ import (
 	"encoding/hex"
 	"fmt"
 
+	"github.com/bittorrent/go-common/v2/crypto"
+	"github.com/bittorrent/protobuf/proto"
 	"github.com/decred/dcrd/dcrec/secp256k1/v4"
-	"github.com/tron-us/go-common/v2/crypto"
-	"github.com/tron-us/protobuf/proto"
 
 	eth "github.com/ethereum/go-ethereum/crypto"
 	ic "github.com/libp2p/go-libp2p/core/crypto"

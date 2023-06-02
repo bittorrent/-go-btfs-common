@@ -2,7 +2,7 @@ package grpc
 
 import (
 	"context"
-	guardpb "github.com/tron-us/go-btfs-common/protos/guard"
+	guardpb "github.com/bittorrent/go-btfs-common/protos/guard"
 )
 
 func GuardClient(addr string) *GuardClientBuilder {

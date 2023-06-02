@@ -12,10 +12,10 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var github_com_tron$us_go$btfs$common_protos_node_node_pb = require('../../github.com/tron-us/go-btfs-common/protos/node/node_pb.js');
-goog.object.extend(proto, github_com_tron$us_go$btfs$common_protos_node_node_pb);
-var github_com_tron$us_protobuf_gogoproto_gogo_pb = require('../../github.com/tron-us/protobuf/gogoproto/gogo_pb.js');
-goog.object.extend(proto, github_com_tron$us_protobuf_gogoproto_gogo_pb);
+var github_com_bittorrent_go$btfs$common_protos_node_node_pb = require('../../github.com/bittorrent/go-btfs-common/protos/node/node_pb.js');
+goog.object.extend(proto, github_com_bittorrent_go$btfs$common_protos_node_node_pb);
+var github_com_bittorrent_protobuf_gogoproto_gogo_pb = require('../../github.com/bittorrent/protobuf/gogoproto/gogo_pb.js');
+goog.object.extend(proto, github_com_bittorrent_protobuf_gogoproto_gogo_pb);
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
 goog.exportSymbol('proto.online.PayLoadInfo', null, global);
@@ -787,7 +787,7 @@ proto.online.PayLoadInfo.prototype.toObject = function(opt_includeInstance) {
 proto.online.PayLoadInfo.toObject = function(includeInstance, msg) {
   var f, obj = {
     nodeId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    node: (f = msg.getNode()) && github_com_tron$us_go$btfs$common_protos_node_node_pb.Node.toObject(includeInstance, f),
+    node: (f = msg.getNode()) && github_com_bittorrent_go$btfs$common_protos_node_node_pb.Node.toObject(includeInstance, f),
     lastSignedInfo: (f = msg.getLastSignedInfo()) && proto.online.SignedInfo.toObject(includeInstance, f),
     lastSignature: jspb.Message.getFieldWithDefault(msg, 4, ""),
     lastTime: (f = msg.getLastTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
@@ -832,8 +832,8 @@ proto.online.PayLoadInfo.deserializeBinaryFromReader = function(msg, reader) {
       msg.setNodeId(value);
       break;
     case 2:
-      var value = new github_com_tron$us_go$btfs$common_protos_node_node_pb.Node;
-      reader.readMessage(value,github_com_tron$us_go$btfs$common_protos_node_node_pb.Node.deserializeBinaryFromReader);
+      var value = new github_com_bittorrent_go$btfs$common_protos_node_node_pb.Node;
+      reader.readMessage(value,github_com_bittorrent_go$btfs$common_protos_node_node_pb.Node.deserializeBinaryFromReader);
       msg.setNode(value);
       break;
     case 3:
@@ -891,7 +891,7 @@ proto.online.PayLoadInfo.serializeBinaryToWriter = function(message, writer) {
     writer.writeMessage(
       2,
       f,
-      github_com_tron$us_go$btfs$common_protos_node_node_pb.Node.serializeBinaryToWriter
+      github_com_bittorrent_go$btfs$common_protos_node_node_pb.Node.serializeBinaryToWriter
     );
   }
   f = message.getLastSignedInfo();
@@ -944,7 +944,7 @@ proto.online.PayLoadInfo.prototype.setNodeId = function(value) {
  */
 proto.online.PayLoadInfo.prototype.getNode = function() {
   return /** @type{?proto.node.Node} */ (
-    jspb.Message.getWrapperField(this, github_com_tron$us_go$btfs$common_protos_node_node_pb.Node, 2));
+    jspb.Message.getWrapperField(this, github_com_bittorrent_go$btfs$common_protos_node_node_pb.Node, 2));
 };
 
 

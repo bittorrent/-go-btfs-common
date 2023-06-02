@@ -55,10 +55,10 @@ Common packages among various go-btfs projects.
 #### install TRON version(pg support) protobuf
 
 ```
-cd github.com/tron-us
+cd github.com/bittorrent
 ```
 ```
-git clone https://github.com/TRON-US/protobuf
+git clone https://github.com/bittorrent/protobuf
 ```
 ```
 cd protobuf && make
