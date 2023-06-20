@@ -947,14 +947,14 @@ func (*Log) XXX_MessageName() string {
 	return "guard.Log"
 }
 
-//the relationship of the objects from Guard's view
+// the relationship of the objects from Guard's view
 // FileStoreMeta (1:n) Contract (1:n) payout
-//contract is the signed document between the renter and host for one shard's storage
+// contract is the signed document between the renter and host for one shard's storage
 // the contract information contains buyer, seller, escrow, guard , storage shard's information, rent duration, amount, payment method(periodically and times)
-//ContractMeta is the information which will not be changed after proposal
-//Contract technically is the contract execution record, it contains the contractMeta and state information
+// ContractMeta is the information which will not be changed after proposal
+// Contract technically is the contract execution record, it contains the contractMeta and state information
 type ContractMeta struct {
-	//Contract proposed by renter, will not be changed after renter proposed
+	// Contract proposed by renter, will not be changed after renter proposed
 	ContractId           string                `protobuf:"bytes,1,opt,name=contract_id,json=contractId,proto3" json:"contract_id,omitempty" pg:"contract_id"`
 	RenterPid            string                `protobuf:"bytes,2,opt,name=renter_pid,json=renterPid,proto3" json:"renter_pid,omitempty" pg:"renter_pid"`
 	HostPid              string                `protobuf:"bytes,3,opt,name=host_pid,json=hostPid,proto3" json:"host_pid,omitempty" pg:"host_pid"`
@@ -1398,7 +1398,7 @@ func (*FileStoreListResponse) XXX_MessageName() string {
 }
 
 type FileStoreMeta struct {
-	//file store meta prepared by renter, will not changed after proposal
+	// file store meta prepared by renter, will not changed after proposal
 	RenterPid                  string    `protobuf:"bytes,1,opt,name=renter_pid,json=renterPid,proto3" json:"renter_pid,omitempty" pg:"renter_pid"`
 	FileHash                   string    `protobuf:"bytes,2,opt,name=file_hash,json=fileHash,proto3" json:"file_hash,omitempty" pg:"file_hash"`
 	FileSize                   int64     `protobuf:"varint,3,opt,name=file_size,json=fileSize,proto3" json:"file_size,omitempty" pg:"file_size"`
@@ -4207,10 +4207,10 @@ type GuardServiceClient interface {
 	SubmitRepairContract(ctx context.Context, in *RepairContract, opts ...grpc.CallOption) (*RepairContractResponse, error)
 	RequestForRepairContracts(ctx context.Context, in *RequestRepairContracts, opts ...grpc.CallOption) (*ResponseRepairContracts, error)
 	ReportFailToDownload(ctx context.Context, in *CancelContractRequest, opts ...grpc.CallOption) (*Result, error)
-	//used for decentral challenge
+	// used for decentral challenge
 	RequestForChallengeJob(ctx context.Context, in *ChallengeJobRequest, opts ...grpc.CallOption) (*ChallengeJobResponse, error)
 	SubmitChallengeJobResult(ctx context.Context, in *ChallengeJobResult, opts ...grpc.CallOption) (*Result, error)
-	//used by btfs scan
+	// used by btfs scan
 	AdminGetDailySummary(ctx context.Context, in *AdminQuery, opts ...grpc.CallOption) (*DailySummary, error)
 	AdminGetDailyHostsRankNew(ctx context.Context, in *AdminQuery, opts ...grpc.CallOption) (*HostSummary, error)
 	AdminGetDailyHostsRankTotal(ctx context.Context, in *AdminQuery, opts ...grpc.CallOption) (*HostSummary, error)
@@ -4401,10 +4401,10 @@ type GuardServiceServer interface {
 	SubmitRepairContract(context.Context, *RepairContract) (*RepairContractResponse, error)
 	RequestForRepairContracts(context.Context, *RequestRepairContracts) (*ResponseRepairContracts, error)
 	ReportFailToDownload(context.Context, *CancelContractRequest) (*Result, error)
-	//used for decentral challenge
+	// used for decentral challenge
 	RequestForChallengeJob(context.Context, *ChallengeJobRequest) (*ChallengeJobResponse, error)
 	SubmitChallengeJobResult(context.Context, *ChallengeJobResult) (*Result, error)
-	//used by btfs scan
+	// used by btfs scan
 	AdminGetDailySummary(context.Context, *AdminQuery) (*DailySummary, error)
 	AdminGetDailyHostsRankNew(context.Context, *AdminQuery) (*HostSummary, error)
 	AdminGetDailyHostsRankTotal(context.Context, *AdminQuery) (*HostSummary, error)
