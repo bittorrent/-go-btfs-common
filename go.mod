@@ -7,7 +7,7 @@ require (
 	github.com/bittorrent/protobuf v1.4.0
 	github.com/btcsuite/btcutil v1.0.3-0.20201208143702-a53e38424cce
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.1.0
-	github.com/ethereum/go-ethereum v1.11.1
+	github.com/ethereum/go-ethereum v1.10.16
 	github.com/gogo/protobuf v1.3.2
 	github.com/golang/protobuf v1.5.3
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
@@ -23,7 +23,8 @@ require (
 
 require (
 	github.com/beorn7/perks v1.0.1 // indirect
-	github.com/btcsuite/btcd/btcec/v2 v2.2.0 // indirect
+	github.com/btcsuite/btcd v0.20.1-beta // indirect
+	github.com/btcsuite/btcd/chaincfg/chainhash v1.0.1 // indirect
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/codemodus/kace v0.5.1 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
