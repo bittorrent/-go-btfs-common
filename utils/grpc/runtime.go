@@ -32,7 +32,7 @@ type RuntimeServer struct {
 
 var Startime = time.Now()
 
-//implementation of the shared helper function
+// implementation of the shared helper function
 func (s *RuntimeServer) CheckRuntime(ctx context.Context, req *sharedpb.SignedRuntimeInfoRequest) (*sharedpb.RuntimeInfoReport, error) {
 	//get connection object
 
