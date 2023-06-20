@@ -99,4 +99,5 @@ $ docker run -i go-btfs-common
 $ docker build -f Dockerfile -t "go-btfs-common" .
 $ docker run -it go-btfs-common /bin/bash
 ```
+...
 
