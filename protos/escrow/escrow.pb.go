@@ -3705,9 +3705,9 @@ type EscrowServiceClient interface {
 	IsPaid(ctx context.Context, in *SignedContractID, opts ...grpc.CallOption) (*SignedPayinStatus, error)
 	// check escrow pay out to seller status of a contract
 	GetPayOutStatus(ctx context.Context, in *SignedContractID, opts ...grpc.CallOption) (*SignedPayoutStatus, error)
-	// get the payout status in batch
+	//get the payout status in batch
 	GetPayOutStatusBatch(ctx context.Context, in *SignedContractIDBatch, opts ...grpc.CallOption) (*SignedPayoutStatusBatch, error)
-	// get the modified payout status in batch
+	//get the modified payout status in batch
 	GetModifyPayOutStatusBatch(ctx context.Context, in *SignedModifyContractIDBatch, opts ...grpc.CallOption) (*SignedPayoutStatusBatch, error)
 	// auth request to cancel the contract
 	// escrow will cancel the left payments to seller
@@ -3720,7 +3720,7 @@ type EscrowServiceClient interface {
 	CreateChannel(ctx context.Context, in *ledger.SignedChannelCommit, opts ...grpc.CallOption) (*ledger.ChannelID, error)
 	// Closes a channel on the ledger.
 	CloseChannel(ctx context.Context, in *ledger.SignedChannelState, opts ...grpc.CallOption) (*ledger.ChannelClosed, error)
-	// use escrow as proxy to do the payment
+	//use escrow as proxy to do the payment
 	Pay(ctx context.Context, in *ledger.SignedTransferRequest, opts ...grpc.CallOption) (*ledger.TransferResult, error)
 	Stake(ctx context.Context, in *SignedStakeRequest, opts ...grpc.CallOption) (*SignedStakeResult, error)
 	StakePenalty(ctx context.Context, in *SignedStakePenaltyRequest, opts ...grpc.CallOption) (*SignedStakePenaltyResult, error)
@@ -3884,9 +3884,9 @@ type EscrowServiceServer interface {
 	IsPaid(context.Context, *SignedContractID) (*SignedPayinStatus, error)
 	// check escrow pay out to seller status of a contract
 	GetPayOutStatus(context.Context, *SignedContractID) (*SignedPayoutStatus, error)
-	// get the payout status in batch
+	//get the payout status in batch
 	GetPayOutStatusBatch(context.Context, *SignedContractIDBatch) (*SignedPayoutStatusBatch, error)
-	// get the modified payout status in batch
+	//get the modified payout status in batch
 	GetModifyPayOutStatusBatch(context.Context, *SignedModifyContractIDBatch) (*SignedPayoutStatusBatch, error)
 	// auth request to cancel the contract
 	// escrow will cancel the left payments to seller
@@ -3899,7 +3899,7 @@ type EscrowServiceServer interface {
 	CreateChannel(context.Context, *ledger.SignedChannelCommit) (*ledger.ChannelID, error)
 	// Closes a channel on the ledger.
 	CloseChannel(context.Context, *ledger.SignedChannelState) (*ledger.ChannelClosed, error)
-	// use escrow as proxy to do the payment
+	//use escrow as proxy to do the payment
 	Pay(context.Context, *ledger.SignedTransferRequest) (*ledger.TransferResult, error)
 	Stake(context.Context, *SignedStakeRequest) (*SignedStakeResult, error)
 	StakePenalty(context.Context, *SignedStakePenaltyRequest) (*SignedStakePenaltyResult, error)

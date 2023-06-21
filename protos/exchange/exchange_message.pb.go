@@ -1290,7 +1290,7 @@ type TronTransaction_TronRaw struct {
 	Auths         []*TronAuthority `protobuf:"bytes,9,rep,name=auths,proto3" json:"auths,omitempty" pg:"auths"`
 	// data not used
 	Data []byte `protobuf:"bytes,10,opt,name=data,proto3" json:"data,omitempty" pg:"data"`
-	// only support size = 1,  repeated list here for extension
+	//only support size = 1,  repeated list here for extension
 	Contract []*TronTransaction_TronContract `protobuf:"bytes,11,rep,name=contract,proto3" json:"contract,omitempty" pg:"contract"`
 	// scripts not used
 	Scripts              []byte   `protobuf:"bytes,12,opt,name=scripts,proto3" json:"scripts,omitempty" pg:"scripts"`
