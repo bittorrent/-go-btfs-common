@@ -6463,7 +6463,7 @@ proto.node.BtfsScanTab.toObject = function(includeInstance, msg) {
     contractAllStorageIncrease: jspb.Message.getFloatingPointFieldWithDefault(msg, 28, 0.0),
     contractFailStorageIncrease: jspb.Message.getFloatingPointFieldWithDefault(msg, 29, 0.0),
     minersAllAmountIncrease: jspb.Message.getFieldWithDefault(msg, 30, 0),
-    storageLeftWhenContractIncrease: jspb.Message.getFieldWithDefault(msg, 31, 0),
+    storageLeftWhenContractIncrease: jspb.Message.getFloatingPointFieldWithDefault(msg, 31, 0.0),
     onlineMinersNumberIncrease: jspb.Message.getFieldWithDefault(msg, 32, 0),
     countryDistributeByContinent: jspb.Message.getFieldWithDefault(msg, 33, "")
   };
@@ -6631,7 +6631,7 @@ proto.node.BtfsScanTab.deserializeBinaryFromReader = function(msg, reader) {
       msg.setMinersAllAmountIncrease(value);
       break;
     case 31:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = /** @type {number} */ (reader.readDouble());
       msg.setStorageLeftWhenContractIncrease(value);
       break;
     case 32:
@@ -6875,8 +6875,8 @@ proto.node.BtfsScanTab.serializeBinaryToWriter = function(message, writer) {
     );
   }
   f = message.getStorageLeftWhenContractIncrease();
-  if (f !== 0) {
-    writer.writeInt64(
+  if (f !== 0.0) {
+    writer.writeDouble(
       31,
       f
     );
@@ -7489,11 +7489,11 @@ proto.node.BtfsScanTab.prototype.setMinersAllAmountIncrease = function(value) {
 
 
 /**
- * optional int64 storage_left_when_contract_increase = 31;
+ * optional double storage_left_when_contract_increase = 31;
  * @return {number}
  */
 proto.node.BtfsScanTab.prototype.getStorageLeftWhenContractIncrease = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 31, 0));
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 31, 0.0));
 };
 
 
@@ -7502,7 +7502,7 @@ proto.node.BtfsScanTab.prototype.getStorageLeftWhenContractIncrease = function()
  * @return {!proto.node.BtfsScanTab} returns this
  */
 proto.node.BtfsScanTab.prototype.setStorageLeftWhenContractIncrease = function(value) {
-  return jspb.Message.setProto3IntField(this, 31, value);
+  return jspb.Message.setProto3FloatField(this, 31, value);
 };
 
 
