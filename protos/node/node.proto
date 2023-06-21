@@ -301,6 +301,17 @@ message BtfsScanTab {
   int64 total_miners = 20;
   int64 big_miners = 21;
   map<string, int32> version_distribute = 22;
+  int64 total_miners_increase = 23;
+  int64 big_miners_increase = 24;
+  int64 super_online_miners_count_increase = 25;
+  int64 contract_all_count_increase = 26;
+  int64 contract_fail_count_increase = 27;
+  double contract_all_storage_increase = 28;
+  double contract_fail_storage_increase = 29;
+  int64 miners_all_amount_increase = 30;
+  int64 storage_left_when_contract_increase = 31;
+  int64 online_miners_number_increase = 32;
+  string country_distribute_by_continent = 33;
 }
 
 message ScoreHistoryTab {

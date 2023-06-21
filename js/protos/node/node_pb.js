@@ -6454,7 +6454,18 @@ proto.node.BtfsScanTab.toObject = function(includeInstance, msg) {
     minersAllAmount: jspb.Message.getFieldWithDefault(msg, 19, 0),
     totalMiners: jspb.Message.getFieldWithDefault(msg, 20, 0),
     bigMiners: jspb.Message.getFieldWithDefault(msg, 21, 0),
-    versionDistributeMap: (f = msg.getVersionDistributeMap()) ? f.toObject(includeInstance, undefined) : []
+    versionDistributeMap: (f = msg.getVersionDistributeMap()) ? f.toObject(includeInstance, undefined) : [],
+    totalMinersIncrease: jspb.Message.getFieldWithDefault(msg, 23, 0),
+    bigMinersIncrease: jspb.Message.getFieldWithDefault(msg, 24, 0),
+    superOnlineMinersCountIncrease: jspb.Message.getFieldWithDefault(msg, 25, 0),
+    contractAllCountIncrease: jspb.Message.getFieldWithDefault(msg, 26, 0),
+    contractFailCountIncrease: jspb.Message.getFieldWithDefault(msg, 27, 0),
+    contractAllStorageIncrease: jspb.Message.getFloatingPointFieldWithDefault(msg, 28, 0.0),
+    contractFailStorageIncrease: jspb.Message.getFloatingPointFieldWithDefault(msg, 29, 0.0),
+    minersAllAmountIncrease: jspb.Message.getFieldWithDefault(msg, 30, 0),
+    storageLeftWhenContractIncrease: jspb.Message.getFieldWithDefault(msg, 31, 0),
+    onlineMinersNumberIncrease: jspb.Message.getFieldWithDefault(msg, 32, 0),
+    countryDistributeByContinent: jspb.Message.getFieldWithDefault(msg, 33, "")
   };
 
   if (includeInstance) {
@@ -6586,6 +6597,50 @@ proto.node.BtfsScanTab.deserializeBinaryFromReader = function(msg, reader) {
       reader.readMessage(value, function(message, reader) {
         jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readInt32, null, "", 0);
          });
+      break;
+    case 23:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setTotalMinersIncrease(value);
+      break;
+    case 24:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setBigMinersIncrease(value);
+      break;
+    case 25:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setSuperOnlineMinersCountIncrease(value);
+      break;
+    case 26:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setContractAllCountIncrease(value);
+      break;
+    case 27:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setContractFailCountIncrease(value);
+      break;
+    case 28:
+      var value = /** @type {number} */ (reader.readDouble());
+      msg.setContractAllStorageIncrease(value);
+      break;
+    case 29:
+      var value = /** @type {number} */ (reader.readDouble());
+      msg.setContractFailStorageIncrease(value);
+      break;
+    case 30:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setMinersAllAmountIncrease(value);
+      break;
+    case 31:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setStorageLeftWhenContractIncrease(value);
+      break;
+    case 32:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setOnlineMinersNumberIncrease(value);
+      break;
+    case 33:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setCountryDistributeByContinent(value);
       break;
     default:
       reader.skipField();
@@ -6762,6 +6817,83 @@ proto.node.BtfsScanTab.serializeBinaryToWriter = function(message, writer) {
   f = message.getVersionDistributeMap(true);
   if (f && f.getLength() > 0) {
     f.serializeBinary(22, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeInt32);
+  }
+  f = message.getTotalMinersIncrease();
+  if (f !== 0) {
+    writer.writeInt64(
+      23,
+      f
+    );
+  }
+  f = message.getBigMinersIncrease();
+  if (f !== 0) {
+    writer.writeInt64(
+      24,
+      f
+    );
+  }
+  f = message.getSuperOnlineMinersCountIncrease();
+  if (f !== 0) {
+    writer.writeInt64(
+      25,
+      f
+    );
+  }
+  f = message.getContractAllCountIncrease();
+  if (f !== 0) {
+    writer.writeInt64(
+      26,
+      f
+    );
+  }
+  f = message.getContractFailCountIncrease();
+  if (f !== 0) {
+    writer.writeInt64(
+      27,
+      f
+    );
+  }
+  f = message.getContractAllStorageIncrease();
+  if (f !== 0.0) {
+    writer.writeDouble(
+      28,
+      f
+    );
+  }
+  f = message.getContractFailStorageIncrease();
+  if (f !== 0.0) {
+    writer.writeDouble(
+      29,
+      f
+    );
+  }
+  f = message.getMinersAllAmountIncrease();
+  if (f !== 0) {
+    writer.writeInt64(
+      30,
+      f
+    );
+  }
+  f = message.getStorageLeftWhenContractIncrease();
+  if (f !== 0) {
+    writer.writeInt64(
+      31,
+      f
+    );
+  }
+  f = message.getOnlineMinersNumberIncrease();
+  if (f !== 0) {
+    writer.writeInt64(
+      32,
+      f
+    );
+  }
+  f = message.getCountryDistributeByContinent();
+  if (f.length > 0) {
+    writer.writeString(
+      33,
+      f
+    );
   }
 };
 
@@ -7210,6 +7342,204 @@ proto.node.BtfsScanTab.prototype.getVersionDistributeMap = function(opt_noLazyCr
 proto.node.BtfsScanTab.prototype.clearVersionDistributeMap = function() {
   this.getVersionDistributeMap().clear();
   return this;};
+
+
+/**
+ * optional int64 total_miners_increase = 23;
+ * @return {number}
+ */
+proto.node.BtfsScanTab.prototype.getTotalMinersIncrease = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 23, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.node.BtfsScanTab} returns this
+ */
+proto.node.BtfsScanTab.prototype.setTotalMinersIncrease = function(value) {
+  return jspb.Message.setProto3IntField(this, 23, value);
+};
+
+
+/**
+ * optional int64 big_miners_increase = 24;
+ * @return {number}
+ */
+proto.node.BtfsScanTab.prototype.getBigMinersIncrease = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 24, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.node.BtfsScanTab} returns this
+ */
+proto.node.BtfsScanTab.prototype.setBigMinersIncrease = function(value) {
+  return jspb.Message.setProto3IntField(this, 24, value);
+};
+
+
+/**
+ * optional int64 super_online_miners_count_increase = 25;
+ * @return {number}
+ */
+proto.node.BtfsScanTab.prototype.getSuperOnlineMinersCountIncrease = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 25, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.node.BtfsScanTab} returns this
+ */
+proto.node.BtfsScanTab.prototype.setSuperOnlineMinersCountIncrease = function(value) {
+  return jspb.Message.setProto3IntField(this, 25, value);
+};
+
+
+/**
+ * optional int64 contract_all_count_increase = 26;
+ * @return {number}
+ */
+proto.node.BtfsScanTab.prototype.getContractAllCountIncrease = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 26, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.node.BtfsScanTab} returns this
+ */
+proto.node.BtfsScanTab.prototype.setContractAllCountIncrease = function(value) {
+  return jspb.Message.setProto3IntField(this, 26, value);
+};
+
+
+/**
+ * optional int64 contract_fail_count_increase = 27;
+ * @return {number}
+ */
+proto.node.BtfsScanTab.prototype.getContractFailCountIncrease = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 27, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.node.BtfsScanTab} returns this
+ */
+proto.node.BtfsScanTab.prototype.setContractFailCountIncrease = function(value) {
+  return jspb.Message.setProto3IntField(this, 27, value);
+};
+
+
+/**
+ * optional double contract_all_storage_increase = 28;
+ * @return {number}
+ */
+proto.node.BtfsScanTab.prototype.getContractAllStorageIncrease = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 28, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.node.BtfsScanTab} returns this
+ */
+proto.node.BtfsScanTab.prototype.setContractAllStorageIncrease = function(value) {
+  return jspb.Message.setProto3FloatField(this, 28, value);
+};
+
+
+/**
+ * optional double contract_fail_storage_increase = 29;
+ * @return {number}
+ */
+proto.node.BtfsScanTab.prototype.getContractFailStorageIncrease = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 29, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.node.BtfsScanTab} returns this
+ */
+proto.node.BtfsScanTab.prototype.setContractFailStorageIncrease = function(value) {
+  return jspb.Message.setProto3FloatField(this, 29, value);
+};
+
+
+/**
+ * optional int64 miners_all_amount_increase = 30;
+ * @return {number}
+ */
+proto.node.BtfsScanTab.prototype.getMinersAllAmountIncrease = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 30, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.node.BtfsScanTab} returns this
+ */
+proto.node.BtfsScanTab.prototype.setMinersAllAmountIncrease = function(value) {
+  return jspb.Message.setProto3IntField(this, 30, value);
+};
+
+
+/**
+ * optional int64 storage_left_when_contract_increase = 31;
+ * @return {number}
+ */
+proto.node.BtfsScanTab.prototype.getStorageLeftWhenContractIncrease = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 31, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.node.BtfsScanTab} returns this
+ */
+proto.node.BtfsScanTab.prototype.setStorageLeftWhenContractIncrease = function(value) {
+  return jspb.Message.setProto3IntField(this, 31, value);
+};
+
+
+/**
+ * optional int64 online_miners_number_increase = 32;
+ * @return {number}
+ */
+proto.node.BtfsScanTab.prototype.getOnlineMinersNumberIncrease = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 32, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.node.BtfsScanTab} returns this
+ */
+proto.node.BtfsScanTab.prototype.setOnlineMinersNumberIncrease = function(value) {
+  return jspb.Message.setProto3IntField(this, 32, value);
+};
+
+
+/**
+ * optional string country_distribute_by_continent = 33;
+ * @return {string}
+ */
+proto.node.BtfsScanTab.prototype.getCountryDistributeByContinent = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 33, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.node.BtfsScanTab} returns this
+ */
+proto.node.BtfsScanTab.prototype.setCountryDistributeByContinent = function(value) {
+  return jspb.Message.setProto3StringField(this, 33, value);
+};
 
 
 
