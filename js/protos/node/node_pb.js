@@ -6465,7 +6465,8 @@ proto.node.BtfsScanTab.toObject = function(includeInstance, msg) {
     minersAllAmountIncrease: jspb.Message.getFieldWithDefault(msg, 30, 0),
     storageLeftWhenContractIncrease: jspb.Message.getFloatingPointFieldWithDefault(msg, 31, 0.0),
     onlineMinersNumberIncrease: jspb.Message.getFieldWithDefault(msg, 32, 0),
-    countryDistributeByContinent: jspb.Message.getFieldWithDefault(msg, 33, "")
+    countryDistributeByContinent: jspb.Message.getFieldWithDefault(msg, 33, ""),
+    statDeadline: jspb.Message.getFieldWithDefault(msg, 34, "")
   };
 
   if (includeInstance) {
@@ -6641,6 +6642,10 @@ proto.node.BtfsScanTab.deserializeBinaryFromReader = function(msg, reader) {
     case 33:
       var value = /** @type {string} */ (reader.readString());
       msg.setCountryDistributeByContinent(value);
+      break;
+    case 34:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setStatDeadline(value);
       break;
     default:
       reader.skipField();
@@ -6892,6 +6897,13 @@ proto.node.BtfsScanTab.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       33,
+      f
+    );
+  }
+  f = message.getStatDeadline();
+  if (f.length > 0) {
+    writer.writeString(
+      34,
       f
     );
   }
@@ -7539,6 +7551,24 @@ proto.node.BtfsScanTab.prototype.getCountryDistributeByContinent = function() {
  */
 proto.node.BtfsScanTab.prototype.setCountryDistributeByContinent = function(value) {
   return jspb.Message.setProto3StringField(this, 33, value);
+};
+
+
+/**
+ * optional string stat_deadline = 34;
+ * @return {string}
+ */
+proto.node.BtfsScanTab.prototype.getStatDeadline = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 34, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.node.BtfsScanTab} returns this
+ */
+proto.node.BtfsScanTab.prototype.setStatDeadline = function(value) {
+  return jspb.Message.setProto3StringField(this, 34, value);
 };
 
 
