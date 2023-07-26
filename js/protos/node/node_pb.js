@@ -6466,7 +6466,7 @@ proto.node.BtfsScanTab.toObject = function(includeInstance, msg) {
     storageLeftWhenContractIncrease: jspb.Message.getFloatingPointFieldWithDefault(msg, 31, 0.0),
     onlineMinersNumberIncrease: jspb.Message.getFieldWithDefault(msg, 32, 0),
     countryDistributeByContinent: jspb.Message.getFieldWithDefault(msg, 33, ""),
-    statDeadline: jspb.Message.getFieldWithDefault(msg, 34, "")
+    statDeadline: (f = msg.getStatDeadline()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -6644,7 +6644,8 @@ proto.node.BtfsScanTab.deserializeBinaryFromReader = function(msg, reader) {
       msg.setCountryDistributeByContinent(value);
       break;
     case 34:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setStatDeadline(value);
       break;
     default:
@@ -6901,10 +6902,11 @@ proto.node.BtfsScanTab.serializeBinaryToWriter = function(message, writer) {
     );
   }
   f = message.getStatDeadline();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       34,
-      f
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
 };
@@ -7555,20 +7557,39 @@ proto.node.BtfsScanTab.prototype.setCountryDistributeByContinent = function(valu
 
 
 /**
- * optional string stat_deadline = 34;
- * @return {string}
+ * optional google.protobuf.Timestamp stat_deadline = 34;
+ * @return {?proto.google.protobuf.Timestamp}
  */
 proto.node.BtfsScanTab.prototype.getStatDeadline = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 34, ""));
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 34));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.node.BtfsScanTab} returns this
+*/
+proto.node.BtfsScanTab.prototype.setStatDeadline = function(value) {
+  return jspb.Message.setWrapperField(this, 34, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.node.BtfsScanTab} returns this
  */
-proto.node.BtfsScanTab.prototype.setStatDeadline = function(value) {
-  return jspb.Message.setProto3StringField(this, 34, value);
+proto.node.BtfsScanTab.prototype.clearStatDeadline = function() {
+  return this.setStatDeadline(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.node.BtfsScanTab.prototype.hasStatDeadline = function() {
+  return jspb.Message.getField(this, 34) != null;
 };
 
 

@@ -312,7 +312,10 @@ message BtfsScanTab {
   double storage_left_when_contract_increase = 31;
   int64 online_miners_number_increase = 32;
   string country_distribute_by_continent = 33;
-  string stat_deadline = 34;
+  google.protobuf.Timestamp stat_deadline = 34 [
+    (gogoproto.nullable) = false,
+    (gogoproto.stdtime) = true
+  ];
 }
 
 message ScoreHistoryTab {
