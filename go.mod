@@ -1,4 +1,4 @@
-module github.com/bittorrent/go-btfs-common
+module github.com/simbadMarino/go-btfs-common
 
 go 1.18
 
