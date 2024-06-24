@@ -198,7 +198,8 @@ func Hex64ToBase64(key string) (string, error) {
 
 	// marshal
 	pbmes := new(pb.PrivateKey)
-	pbmes.Type = pb.KeyType_Secp256k1
+	keyType := pb.KeyType_Secp256k1
+	pbmes.Type = &keyType
 	pbmes.Data = dst
 	marshaledKey, err := proto.Marshal(pbmes)
 	if err != nil {
